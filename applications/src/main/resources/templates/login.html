@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html lang="zxx">
+
+<head>
+	<title>Home</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content=""
+	/>
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- Meta tag Keywords -->
+	<!-- css files -->
+	
+	<link href="css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+	<link rel="stylesheet" href="css/loginstyle.css" type="text/css" media="all" />
+	<link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+	<script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/plugins/angularjs/angular.min.js"></script>
+	<script src="js/base.js"></script>
+	<script src="/js/service/loginService.js"></script>
+	<script src="/js/controller/baseController.js"></script>
+	<script src="/js/controller/loginController.js"></script>
+</head>
+
+<body ng-app="jianzhi" ng-controller="loginController" >
+	<!-- bg effect -->
+	<div id="bg">
+		<canvas></canvas>
+		<canvas></canvas>
+		<canvas></canvas>
+	</div>
+	
+	<!-- content -->
+	<div class="sub-main-w3">
+		<form action="index.html" method="post">
+			<h2>欢迎登录易兼职
+				<i class="fa fa-level-down"></i>
+			</h2>
+			 <div class="row">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label text-right">用户名<i class="fa fa-user"></i></label>
+                    <div class="col-sm-6">
+                        <input ng-model="uname" type="text" class="form-control input-sm">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label text-right">密码<i class="fa fa-unlock-alt"></i></label>
+                    <div class="col-sm-6">
+                        <input ng-model="pwd" type="password" class="form-control input-sm">
+                    </div>
+                </div>
+            </div>
+			<button ng-click="login()" type="button"><i class="fa fa-send"></i> 登 录</button>
+
+			<button ng-click="register()" type="button"><i class="fa fa-send"></i> 注 册</button>
+
+		</form>
+	</div>
+
+
+
+	
+	<script src="js/jquery.min.js"></script>
+	
+	<script src="js/canva_moving_effect.js"></script>
+
+</body>
+
+</html>

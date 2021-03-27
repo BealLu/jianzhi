@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- 页面meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>广告管理</title>
+    <!-- Tell the browser to be responsive to screen width -->
+	<link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/plugins/adminLTE/css/AdminLTE.css">
+	<link rel="stylesheet" href="/plugins/adminLTE/css/skins/_all-skins.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../plugins/angularjs/angular.min.js"></script>
+	<script src="../js/base.js"></script>
+	<script src="../js/service/positionService.js"></script>
+	<script src="../js/controller/baseController.js"></script>
+	<script src="../js/controller/descPosiController.js"></script>
+</head>
+
+<body class="hold-transition skin-red sidebar-mini" style="background-color: rgb(243,243,244)" ng-app="jianzhi" ng-controller="descPosiController" ng-init="findDesc()">
+
+
+  <div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="false">×</button>
+			<h3 id="myModalLabel">职位详情</h3>
+		</div>
+		<div class="modal-body">
+
+			<table class="table table-bordered table-striped"  width="800px">
+		      	<tr>
+		      		<td>标题</td>
+		      		<td><input  ng-model="entity.title" class="form-control" readonly="readonly" >  </td>
+		      	</tr>
+			    <tr>
+		      		<td>薪资</td>
+		      		<td><input  ng-model="entity.salary" class="form-control" readonly="readonly"  >  </td>
+		      	</tr>
+				<tr>
+					<td>详情</td>
+					<td><textarea ng-model="entity.descc" class="form-control" cols="30" rows="10" readonly="readonly"></textarea></td>
+				</tr>
+				<tr>
+					<td>要求</td>
+					<td><textarea ng-model="entity.demand" class="form-control" cols="30" rows="5" readonly="readonly"></textarea></td>
+				</tr>
+				<tr>
+					<td>地址</td>
+					<td><textarea ng-model="entity.address" class="form-control" cols="30" rows="3" readonly="readonly"></textarea></td>
+				</tr>
+				<tr>
+					<td>电话</td>
+					<td><input  ng-model="entity.phone" class="form-control" readonly="readonly" >  </td>
+				</tr>
+				<tr>
+					<td>发布人</td>
+					<td>
+						<span>发布人id:{{entity.userId}}</span>
+					</td>
+				</tr>
+			 </table>
+
+		</div>
+	  </div>
+	</div>
+
+</body>
+
+</html>

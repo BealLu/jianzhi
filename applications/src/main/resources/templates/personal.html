@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<!-- Mirrored from www.gzsxt.cn/theme/hplus/index_v2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:18:30 GMT -->
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>办公系统 - 主页</title>
+    <meta name="keywords" content="办公系统">
+    <meta name="description" content="办公系统">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+
+    <!-- Morris -->
+    <link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+
+    <!-- Gritter -->
+    <link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/plugins/angularjs/angular.min.js"></script>
+    <script src="js/base.js"></script>
+    <script src="/js/service/personalService.js"></script>
+    <script src="/js/controller/baseController.js"></script>
+    <script src="/js/controller/personalController.js"></script>
+</head>
+
+<body class="gray-bg" ng-app="jianzhi" ng-controller="personalController" ng-init="findUser()">
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>{{entity.user.username}}</h5>
+                    </div>
+                    <div class="ibox-content no-padding">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <p> <img src="{{entity.user.pic}}" style="width: 230px" height="100px"></p>
+                                <small class="block text-muted" ng-if="entity.user.status==1"><i class="fa fa-clock-o"></i>正式用户</small>
+                                <small class="block text-muted" ng-if="entity.user.status==0"><i class="fa fa-clock-o"></i>账户审核中</small>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>我发布的兼职</h5>
+                    </div>
+                    <div class="ibox-content">
+
+                        <div>
+                            <div class="feed-activity-list">
+
+                                <div class="feed-element" ng-repeat="entity1 in entity.publish">
+                                    <span class="pull-left" ng-if="entity1.ispublish==0">
+                                       未发布
+                                    </span>
+                                    <span class="pull-left" ng-if="entity1.status==0&&entity1.ispublish==1">
+                                       审核中
+                                    </span>
+                                    <span class="pull-left" ng-if="entity1.status==1">
+                                        <img alt="image" class="img-circle" src="img/success.png">
+                                       审核通过
+                                    </span>
+                                    <span class="pull-left" ng-if="entity1.status==2">
+
+                                       审核未通过
+                                    </span>
+
+                                    <div class="media-body ">
+                                        <a href="addPosition.html?id={{entity1.id}}" class="J_menuItem"><small class="pull-right">修改</small></a>
+                                        <strong>{{entity1.title}}</strong>
+                                        <br>
+                                        <a ng-click="addPublish(entity1.id)" class="J_menuItem" ng-if="entity1.ispublish==0"><small class="pull-right">发布</small></a>
+                                        <a ng-click="remPublish(entity1.id)" class="J_menuItem" ng-if="entity1.ispublish==1"><small class="pull-right">取消发布</small></a>
+                                        <small class="text-muted">{{entity1.salary}}</small>
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>我收藏的兼职</h5>
+                    </div>
+                    <div class="ibox-content">
+
+                        <div>
+                            <div class="feed-activity-list">
+
+                                <div class="feed-element" ng-repeat="entity2 in entity.guanzhu">
+                                    <span class="pull-left">
+                                        <img alt="image" class="img-circle" src="img/user.png">
+                                    </span>
+                                    <div class="media-body ">
+                                        <a href="descPosition.html?id={{entity2.descFk}}" class="J_menuItem"><small class="pull-right">详情</small></a>
+                                        <strong>{{entity2.title}}</strong>
+                                        <br>
+                                        <small class="text-muted">{{entity2.salary}}</small>
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <script src="js/jquery.min.js?v=2.1.4"></script>
+    <script src="js/bootstrap.min.js?v=3.3.6"></script>
+
+    <script src="js/plugins/peity/jquery.peity.min.js"></script>
+    <script src="js/plugins/peity/peity-demo.min.js"></script>
+    
+    <script>
+        // $(document).ready(function(){WinMove();setTimeout(function(){$.gritter.add({title:"您有2条未读信息",text:'请前往<a href="mailbox.html" class="text-warning">收件箱</a>查看今日任务',time:10000})},2000);$(".chart").easyPieChart({barColor:"#f8ac59",scaleLength:5,lineWidth:4,size:80});$(".chart2").easyPieChart({barColor:"#1c84c6",scaleLength:5,lineWidth:4,size:80});var data1=[[0,4],[1,8],[2,5],[3,10],[4,4],[5,16],[6,5],[7,11],[8,6],[9,11],[10,30],[11,10],[12,13],[13,4],[14,3],[15,3],[16,6]];var data2=[[0,1],[1,0],[2,2],[3,0],[4,1],[5,3],[6,1],[7,5],[8,2],[9,3],[10,2],[11,1],[12,0],[13,2],[14,8],[15,0],[16,0]];$("#flot-dashboard-chart").length&&$.plot($("#flot-dashboard-chart"),[data1,data2],{series:{lines:{show:false,fill:true},splines:{show:true,tension:0.4,lineWidth:1,fill:0.4},points:{radius:0,show:true},shadowSize:2},grid:{hoverable:true,clickable:true,tickColor:"#d5d5d5",borderWidth:1,color:"#d5d5d5"},colors:["#1ab394","#464f88"],xaxis:{},yaxis:{ticks:4},tooltip:false})});
+    </script>
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+</body>
+
+
+<!-- Mirrored from www.gzsxt.cn/theme/hplus/index_v2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:18:46 GMT -->
+</html>
+    

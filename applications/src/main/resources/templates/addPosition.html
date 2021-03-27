@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- 页面meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>广告管理</title>
+    <!-- Tell the browser to be responsive to screen width -->
+	<link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/plugins/adminLTE/css/AdminLTE.css">
+	<link rel="stylesheet" href="/plugins/adminLTE/css/skins/_all-skins.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/plugins/angularjs/angular.min.js"></script>
+	<script src="js/base.js"></script>
+	<script src="/js/service/positionService.js"></script>
+	<script src="/js/controller/baseController.js"></script>
+	<script src="/js/controller/positionController.js"></script>
+
+</head>
+
+<body class="hold-transition skin-red sidebar-mini" style="background-color: rgb(243,243,244)" ng-app="jianzhi" ng-controller="positionController" ng-init="findUserId();findTypePid(0)">
+
+
+  <div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="false">×</button>
+			<h3 id="myModalLabel">职位编辑</h3>
+		</div>
+		<div class="modal-body">
+
+			<table class="table table-bordered table-striped"  width="800px">
+		      	<tr>
+		      		<td>标题</td>
+		      		<td><input  ng-model="entity.title" class="form-control" placeholder="请输入工作职位" >  </td>
+		      	</tr>
+			    <tr>
+		      		<td>薪资</td>
+		      		<td><input  ng-model="entity.salar" class="form-control" placeholder="请输入薪资" >  </td>
+		      	</tr>
+				<tr>
+					<td>详情</td>
+					<td><textarea ng-model="entity.desc" class="form-control" cols="30" rows="10" placeholder="请输入职位详情"></textarea></td>
+				</tr>
+				<tr>
+					<td>要求</td>
+					<td><textarea ng-model="entity.demand" class="form-control" cols="30" rows="5" placeholder="请输入职位的要求"></textarea></td>
+				</tr>
+				<tr>
+					<td>地址</td>
+					<td><textarea ng-model="entity.address" class="form-control" cols="30" rows="3" placeholder="请输入工作地址"></textarea></td>
+				</tr>
+				<tr>
+					<td>电话</td>
+					<td><input  ng-model="entity.phone" class="form-control" placeholder="请输入工作联系人电话" >  </td>
+				</tr>
+				<tr>
+					<td>职位类型</td>
+					<td>
+						<select  class="form-control" ng-model="entity.type1" ng-options="item.id as item.name for item in typeList1"></select>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<select  class="form-control" ng-model="entity.type2" ng-options="item.id as item.name for item in typeList2"></select>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<select  class="form-control" ng-model="entity.type3" ng-options="item.id as item.name for item in typeList3"></select>
+					</td>
+				</tr>
+
+			 </table>
+
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-success" ng-click="save()" data-dismiss="modal" aria-hidden="true">保存</button>
+			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+		</div>
+	  </div>
+	</div>
+
+</body>
+
+</html>

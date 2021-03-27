@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- 页面meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>广告管理</title>
+    <!-- Tell the browser to be responsive to screen width -->
+	<link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/plugins/adminLTE/css/AdminLTE.css">
+	<link rel="stylesheet" href="/plugins/adminLTE/css/skins/_all-skins.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="/plugins/angularjs/angular.min.js"></script>
+	<script src="js/base.js"></script>
+	<script src="/js/service/descPositionService.js"></script>	<script src="/js/service/uploadService.js"></script>
+	<script src="/js/controller/baseController.js"></script>
+	<script src="/js/controller/descPositionController.js"></script>
+</head>
+
+<body class="hold-transition skin-red sidebar-mini" style="background-color: rgb(243,243,244)" ng-app="jianzhi" ng-controller="descPositionController" ng-init="findDesc();findAllType()">
+
+
+  <div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="false">×</button>
+			<h3 id="myModalLabel">职位详情</h3>
+		</div>
+		<div class="modal-body">
+
+			<table class="table table-bordered table-striped"  width="800px">
+				<tr>
+					<td>分类</td>
+					<td>{{allTypeList[entity.posi.type1]}}>>{{allTypeList[entity.posi.type2]}}>>{{allTypeList[entity.posi.type3]}} </td>
+				</tr>
+		      	<tr>
+		      		<td>标题</td>
+		      		<td><input  ng-model="entity.desc.title" class="form-control" readonly="readonly" >  </td>
+		      	</tr>
+			    <tr>
+		      		<td>薪资</td>
+		      		<td><input  ng-model="entity.desc.salary" class="form-control" readonly="readonly"  >  </td>
+		      	</tr>
+				<tr>
+					<td>详情</td>
+					<td><textarea ng-model="entity.desc.descc" class="form-control" cols="40" rows="10" readonly="readonly"></textarea></td>
+				</tr>
+				<tr>
+					<td>要求</td>
+					<td><textarea ng-model="entity.desc.demand" class="form-control" cols="40" rows="5" readonly="readonly"></textarea></td>
+				</tr>
+				<tr>
+					<td>地址</td>
+					<td><textarea ng-model="entity.desc.address" class="form-control" cols="40" rows="3" readonly="readonly"></textarea></td>
+				</tr>
+				<tr>
+					<td>电话</td>
+					<td><input  ng-model="entity.desc.phone" class="form-control" readonly="readonly" >  </td>
+				</tr>
+				<tr>
+					<td>发布人</td>
+					<td style="vertical-align: middle;">
+
+						<a href="profile.html" class="pull-left">
+							<img alt="image" class="img-circle" src="{{entity.user.pic}}" style="width: 40px;height: 40px">
+						</a>
+							<span style="padding-top:10px;padding-left: 20px ">{{entity.user.username}}</span>
+
+					</td>
+				</tr>
+			 </table>
+		</div>
+		<div ng-if="isSelf()==false">
+		<div class="modal-footer" ng-if="!isGuanZhu()">
+			<button class="btn btn-success" ng-click="addguanzhu(entity.desc.id)" data-dismiss="modal" aria-hidden="true">收藏此兼职</button>
+		</div>
+		<div class="modal-footer" ng-if="isGuanZhu()">
+			<button class="btn btn-success" ng-click="remguanzhu(entity.desc.id)" data-dismiss="modal" aria-hidden="true">取消收藏</button>
+		</div>
+		</div>
+	  </div>
+	</div>
+
+</body>
+
+</html>
