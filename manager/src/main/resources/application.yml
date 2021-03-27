@@ -32,9 +32,4 @@ logging:
       offcn: debug
   file:
     path: D:\log\scw-user
-oss:
-  endpoint: http://oss-cn-beijing.aliyuncs.com
-  bucketDomain: offcnludie.oss-cn-beijing.aliyuncs.com
-  accessKeyId: LTAI4FymPqmgSd2TN9Gag5CT
-  accessKeySecret: ygog7QcQfedLdIWddvrVc8mu4Uj7lk
-  bucketName: offcnludie
+
